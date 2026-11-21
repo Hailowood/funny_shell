@@ -28,7 +28,11 @@ int main(int argc, const char* argv[]){
 	t_end.tv_sec = 0, t_end.tv_nsec = 0;
 	
 	int check_error = 0;
-	char* arguv[argc+1];
+	char* arguv[argc+1]; // change static memory to malloc memory
+	/*
+	 *
+	 * char* argv = alloc(size*char,0);
+	 */
 	
 	// make the argument_vector = arguv
 	memcpy(arguv, argv + 1, (argc-1)*sizeof(char*)); 
@@ -43,7 +47,7 @@ int main(int argc, const char* argv[]){
 	else{
 
                 // check the t_start, t_end
-                clock_gettime(CLOCK_REALTIME, &t_start);
+                clock_gettime(CLOCK_REALTIME, &t_start); 
 		wait(NULL);
 		clock_gettime(CLOCK_REALTIME, &t_end);
                 // check the time between t_start to t_end;
